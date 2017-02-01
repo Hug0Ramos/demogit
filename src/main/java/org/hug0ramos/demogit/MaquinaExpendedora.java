@@ -3,7 +3,7 @@ package org.hug0ramos.demogit;
 public class MaquinaExpendedora {
 
 	Integer galletas;
-	Integer dinero; // cambio actualmente dentro de la maquina
+	Integer dinero; // cambio actual dentro de la maquina
 	boolean corriente; // corriente electrica
 
 	public MaquinaExpendedora(Integer galletas, Integer dinero) {
