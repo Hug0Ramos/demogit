@@ -29,7 +29,39 @@ public class MaquinaExpendedora {
 		this.corriente = true;
 	}
 
-	// TODO public String sacarGalleta(Integer dinero){
+	public String sacarGalleta(Integer dinero) {
+
+		if (dinero <= 0) {
+			throw new IllegalArgumentException("Inserte una cantidad mayor a 0.");
+		}
+
+		String res = "";
+
+		if (!getCorriente()) {
+			res = "La máquina actualmente está apagada.";
+		} else {
+			if (galletas == 0) {
+				res = "No quedan galletas. Lo siento.";
+			} else {
+				if (dinero < 1) {
+					res = "Una galleta vale 1 euro. No se acepta menos.";
+				} else {
+
+					Integer cambio = dinero - 1;
+
+					if (cambio > getDinero()) {
+						res = "Lo siento, no te puedo dar la galleta por que no tengo cambio para devolverte. Cambio actual: "
+								+ getDinero() + " euros.";
+					} else {
+						this.dinero = getDinero() + (dinero - cambio);
+						res = "Aquí tiene su galleta. Le devuelvo su cambio: " + cambio + " euros.";
+						res += ". Para tu información, mi cambio actual es de: " + getDinero() + " euros.";
+					}
+				}
+			}
+		}
+		return res;
+	}
 
 	public String toString() {
 		return "Maquina Expendedora - Modelo JGKR 3000. Número de galletas: " + getGalletas() + ". Cambio actual: "
